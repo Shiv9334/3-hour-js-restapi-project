@@ -1,6 +1,6 @@
 
 
-let url = "https://crudcrud.com/api/85ba3477f9c942e69476a9326448060e"
+let url = "https://crudcrud.com/api/a8bfc16c663046cc84817268f653320a"
 obj = {
   product: '',
   Price: '',
@@ -10,7 +10,7 @@ showdata();
 
 function showdata() {
   axios.get(url + "/products")
-    .then(res => {
+    await(res => {
       for (let i = 0; i < res.data.length; i++) {
         let li = document.createElement('li');
         let deletebtn = document.createElement('button');
@@ -48,7 +48,7 @@ list_items.addEventListener('click', e => {
     let text = li.innerHTML;
     let innerText = text.split(" - ");
     axios.get(url + '/products')
-      .then(res => {
+      await(res => {
         for (let j = 0; j < res.data.length; j++) {
           if (res.data[j].product === innerText[0]) {
             axios.delete(url + '/products/' + res.data[j]._id)
